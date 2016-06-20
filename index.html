@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>San Francesco Onlus</title>
+
+  <!-- Bootstrap core CSS -->
+   <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+   <link rel="author" href="https://github.com/angular-ui/bootstrap/graphs/contributors">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/starter-template.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css" rel="stylesheet">
+
+  <!-- AngularJS and ng-Route -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  
+  <script src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
+
+      <!-- Firebase -->
+      <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+  <!-- AngularFire -->
+      <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+	  
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+  
+	
+	 <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+	
+	 <script src="js/ui-bootstrap-tpls-1.3.3.min.js"></script>
+	  <script src="js/moment.js"></script>
+	
+   
+	
+	<style>
+
+.grid {
+  width: 100%;
+  height: 500px;
+}
+
+/*  CUSTOM CSS STARTS HERE */
+.grid .ui-grid-cell-contents {
+  padding: 1px 1px;
+}
+
+.grid .ui-grid-render-container-body .ui-grid-header-cell,
+.grid .ui-grid-render-container-left .ui-grid-header-cell,
+.grid .ui-grid-row,
+.grid .ui-grid-cell,
+.grid .ui-grid-cell .ui-grid-vertical-bar {
+  
+  font-size: 12px;
+  line-height: 20px;
+}
+.grid .ui-grid-render-container-body .ui-grid-header-cell,
+.grid .ui-grid-render-container-left .ui-grid-header-cell,
+.grid .ui-grid-header-cell {
+  height: 55px !important;
+}
+.grid .ui-grid-filter-container {
+  padding: 1px 3px;
+}
+
+fieldset{
+    background: #FCFCFC;
+    padding: 16px;
+    border: 1px solid #D5D5D5;
+}
+.addfields{
+    margin: 10px 0;
+}
+
+#choicesDisplay {
+    padding: 10px;
+    background: rgb(227, 250, 227);
+    border: 1px solid rgb(171, 239, 171);
+    color: rgb(9, 56, 9);
+}
+.remove{
+    background: #C76868;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 9px;
+    vertical-align: top;
+    line-height: 100%;   
+}
+input[type="text"],
+select{
+    padding:5px;
+}
+	</style>
+
+  </head>
+<body ng-app="myApp">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#/">Migranti San Francesco ONLUS</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="#/">Home</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+        <!-- Container -->
+<div class="container starter-template">
+
+<div class="row">
+<div class="col-sm-4 col-sm-offset-4">
+<img src="css/logo.png" />
+</div>
+</div>
+  
+<div >  
+  <ul class="nav nav-tabs" ng-controller="TabsCtrl">
+      <li ng-class="tabClass(tab)" ng-repeat="tab in tabs" tab="tab"><a href="{{tab.link}}" ng-click="setSelectedTab(tab)">{{tab.label}}</a></li>
+</ul>
+  
+  <br/>
+  <br/>
+  
+      <div ng-view></div>
+</div>
+	  
+	  
+	  
+
+        </div>
+
+        <!-- Module -->
+        <script src="js/app.js"></script>
+
+        <!-- Controllers -->
+        <script src="js/controllers/ListController.js"></script>    
+        <script src="js/controllers/AddController.js"></script>     
+        <script src="js/controllers/EditController.js"></script> 
+		<script src="js/controllers/StampaController.js"></script>
+		<script src="js/controllers/AddCentriController.js"></script> 
+		<script src="js/controllers/PocketMoneyController.js"></script> 
+		<script src="js/controllers/StampaPocketMoneyController.js"></script> 
+		<script src="js/controllers/editCentriController.js"></script> 
+		<script src="js/controllers/ListCentriController.js"></script> 
+		<script src="js/services/centri.svc.js"></script> 
+		<script src="js/services/anagrafica.svc.js"></script> 
+
+    </body>
+</html>

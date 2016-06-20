@@ -1,0 +1,34 @@
+<h1>Creazione Nuovo Centro di Accoglianza</h1>
+
+<form class="form-horizontal" role="form">
+  <div class="row" >
+<div class="form-group">
+    <label for="nome" class="col-sm-2 control-label">Nome Centro:</label>
+    <div class="col-sm-2">
+      <input class="form-control" id="nome"
+             ng-model="centro.nome" placeholder="inserire nome centro"/>
+    </div>
+	
+  </div>
+</div>
+
+<div class="row" >
+<div class="form-group">
+   
+	 <label for="indirizzo" class="col-sm-2 control-label">Luogo e indirizzo centro :</label>
+    <div class="col-sm-2">
+      <input class="form-control" id="indirizzo"
+             ng-model="centro.luogo" placeholder="inserire il luogo del centro"/>
+    </div>
+	
+	
+  </div>
+</div>
+
+  <div class="form-group">
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <a ng-click="addCentro()" class="btn btn-small btn-primary">Crea Centro</a>
+    </div>
+  </div>
+</form>

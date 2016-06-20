@@ -1,0 +1,175 @@
+<div class="row">
+ <div class="col-sm-4 col-sm-offset-8">
+ <img ng-if="!anagrafica.image" src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-md.png" />
+ <img ng-if="anagrafica.image" src="{{anagrafica.image}}" />
+ </div>
+</div>
+
+<br/>
+<br/>
+
+<div class="row" >
+ <label for="Cognome" class="col-sm-4 control-label">Cognome:</label>
+   
+    <div  class="col-sm-2">
+      <span>{{anagrafica.cognome}} </span>
+    </div>
+</div>
+<br/>
+
+<div class="row" >
+ <label for="Cognome" class="col-sm-4 control-label">Nome:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.nome}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Codice Fiscale:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.codicefiscale}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Data Nascita:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.datanascitastring}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Luogo di nascita:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.luogonascita}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Provenienza:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.provenienza}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Cittadinanza:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.cittadinanza}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Data Ingresso Italia:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.dataingressoitaliastring}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Citta ingresso:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.cittaingresso}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Paese transitati:</label>
+    <div class="col-sm-2">
+	 <div data-ng-repeat="paesetransito in paesitransitati">
+	
+      <span>{{anagrafica.paesetransito[$index]}} -- </span>
+	 
+	  </div>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Lingue Parlate:</label>
+    <div class="col-sm-2">
+	 <div data-ng-repeat="linguaparlata in lingueparlate">
+	
+      <span>{{anagrafica.linguaparlata[$index]}} -- </span>
+	 
+	  </div>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Religione:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.religione}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Primo centro di accoglienza:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.primocentrodiaccoglienza}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Indirizzo del centro:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.indirizzocentro}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Medico Curante:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.medicocurante}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Situazione sanitario:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.situazionesanitario}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Data Commissione:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.datacommissionestring}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Esito Commissione:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.esitocommissione}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Ricorso:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.ricorso}} </span>
+    </div>
+</div>
+
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Studio avvocato:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.studioavvocato}} </span>
+    </div>
+</div>
+<br/>
+<div class="row" >
+ <label for="CodiceFiscale" class="col-sm-4 control-label">Note:</label>
+    <div class="col-sm-2">
+      <span>{{anagrafica.note}} </span>
+    </div>
+</div>
+
+<br/>
+  <div class="form-group">
+
+    <div class="col-sm-offset-2 col-sm-10">
+    
+	  <a href="#/products" class="btn btn-small btn-danger">Chiudi</a>
+    </div>
+  </div>

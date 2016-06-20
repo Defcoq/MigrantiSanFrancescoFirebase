@@ -1,0 +1,79 @@
+<h1>Stampa Elenco Pocket Money Per Centro</h1>
+
+<form class="form-horizontal" role="form">
+<h3> selezionare un centro di accoglienza</h3>
+<select class="form-control" ng-model="pocketmoney.centro"
+        ng-disabled="centri.length == 0"
+        ng-options="centro.nome as centro.nome for centro in centri">
+  <option value="">Seleziona un centro di accoglienza</option>
+</select>
+<br/>
+
+  <div class="row" >
+<div class="form-group">
+        <label for="DataNascita" class="col-sm-2 control-label">Periodo Dal:</label>
+    <div class="col-sm-2">
+      
+			 <div class="input-group">
+			<input type="text" 
+			class="form-control" 
+			uib-datepicker-popup="{{format}}"
+			ng-model="pocketmoney.dal" 
+			is-open="popup1.opened" 
+			datepicker-options="dateOptions" 
+			close-text="Close" 
+			alt-input-formats="altInputFormats"
+			/>
+			
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+		  </div>
+    </div>
+	
+  </div>
+  
+  <div class="form-group">
+        <label for="DataNascita" class="col-sm-2 control-label">Periodo AL:</label>
+    <div class="col-sm-2">
+      
+			 <div class="input-group">
+			<input type="text" 
+			class="form-control" 
+			uib-datepicker-popup="{{format}}"
+			ng-model="pocketmoney.al" 
+			is-open="popup2.opened" 
+			datepicker-options="dateOptions" 
+			close-text="Close" 
+			alt-input-formats="altInputFormats"
+			/>
+			
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+		  </div>
+    </div>
+	
+  </div>
+  
+  <div class="form-group">
+    <label for="Cognome" class="col-sm-2 control-label">Importo:</label>
+    <div class="col-sm-2">
+      <input class="form-control" id="Cognome"
+             ng-model="pocketmoney.importo" placeholder="Importo"/>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row" >
+
+</div>
+
+  <div class="form-group">
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <a  ng-click="StampaPocketMoney(pocketmoney)" class="btn btn-small btn-primary">Stampa Pocket Money</a>
+    </div>
+  </div>
+</form>

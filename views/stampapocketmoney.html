@@ -1,0 +1,41 @@
+
+<div class="row" >
+ <div class="col-sm-4 col-sm-offset-5 ">
+ Ricevuta Di Pagamento - Centro di Accoglienza {{centro}}
+ </div>
+</div>
+
+<div class="row" >
+ <div class="well">
+ <p>
+Dichiariamo di ricevere dall'Ass. Migranti San Francesco Onlus, quale pocket money per il periodo dal {{dal}} al {{al}} la somma di euro {{importo}},
+cadauno:
+</p>
+ </div>
+</div>
+<div class="row">
+<table class="table table-striped">
+  <tr ng-repeat="x in anagraficamigranti | orderBy:'Priority' | filter:{ centro : centro }:true |filter:search:strict">
+    <td>{{ x.centro }}</td>
+    <td>{{ x.nome }}</td>
+    <td>{{ x.cognome }}</td>
+	
+	<td>-------------------------------------------------------</td>
+  </tr>
+</table>
+</div>
+<br/>
+
+<div class="row" >
+ <div class="col-sm-4 col-sm-offset-4 ">
+ <p>
+Via Italia 54 - 53035 Monteriggioni,Loc. Castellina Scalo
+</p>
+ <p>
+Tf./fax:0577304214 - e.mail: segretariamigrantes.siena@gmail.com
+</p>
+ <p>
+C.f. /P.IVA: 01390320529 - albo provinciale Siena n. 366
+</p>
+ </div>
+</div>

@@ -1,0 +1,19 @@
+{
+  "anagraficamigranti" : {
+    "0" : {
+      "cognome" : "Moussa",
+      "nome" : "Mamadou",
+      "cittadinanza" : "Gambia"
+    },
+    "1" : {
+      "cognome" : "Maoile",
+      "nome" : "Calvin claude",
+      "cittadinanza" : "Nigeria"
+    },
+    "2" : {
+       "cognome" : "Ebo eko",
+      "nome" : "stephanef",
+      "cittadinanza" : "ethiopia"
+    }
+  }
+}
