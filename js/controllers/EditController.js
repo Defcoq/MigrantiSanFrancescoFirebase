@@ -1,10 +1,22 @@
-app.controller('EditController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 
-    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray){
+app.controller('EditController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 'currentAuth','FBURLUserProfile',
+    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray,currentAuth,FBURLUserProfile){
 
     var ref = new Firebase(FBURL + $routeParams.id);
 	var anag = $firebaseObject(ref);
 
     $scope.anagrafica = anag;
+	
+	 var ref = new Firebase(FBURLUserProfile + currentAuth.uid);
+	var userprofile = $firebaseObject(ref);
+    	userprofile.$loaded().then(
+	function(data)
+	{
+	 $scope.anagrafica.updateby = data.name + "-" + data.email;
+	 $scope.anagrafica.updateat = moment(new Date()).format("DD/MM/YYYY");
+	}).catch(function(err)
+	{
+	  console.log(err);
+	});
 	
   var countriesRef = new Firebase(FBURLCountries);
   var countries = $firebaseArray(countriesRef);
@@ -35,7 +47,7 @@ app.controller('EditController', ['$scope','$location', '$routeParams', '$fireba
             nome: $scope.anagrafica.cognome,
             codicefiscale: $scope.anagrafica.codicefiscale,
 			
-			datanascita:$scope.anagrafica.datanascita.toJSON() ,
+			datanascita:dataNascitaDaSalvare ,
 			datanascitatimestamp:dataNascitaDaSalvare,
 			datanascitastring: moment($scope.anagrafica.datanascita).format('DD/MM/YYYY'),
             luogonascita: $scope.anagrafica.luogonascita,
@@ -65,6 +77,8 @@ app.controller('EditController', ['$scope','$location', '$routeParams', '$fireba
 			ricorso: $scope.anagrafica.ricorso,
             studioavvocato: $scope.anagrafica.studioavvocato,
             note: $scope.anagrafica.note,
+			updateby: $scope.anagrafica.updateby,
+	        updateat: moment(new Date()).format("DD/MM/YYYY"),
         });
         $scope.edit_form.$setPristine();
         $scope.anagrafica = {};

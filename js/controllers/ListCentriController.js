@@ -1,4 +1,4 @@
-app.controller('ListCentriController', ['$scope', '$firebaseArray', 'FBURL','FBURLCentri','$location', function($scope,$firebaseArray, FBURL,FBURLCentri,$location){
+app.controller('ListCentriController', ['$scope', '$firebaseArray', 'FBURL','FBURLCentri','$location','currentAuth', function($scope,$firebaseArray, FBURL,FBURLCentri,$location,currentAuth){
   var anagraficamigranti = new Firebase(FBURL);
   var anagrafica = $firebaseArray(anagraficamigranti);
   $scope.anagraficamigranti = anagrafica;

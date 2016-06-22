@@ -1,5 +1,5 @@
-app.controller('StampaController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 
-    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray){
+app.controller('StampaController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 'currentAuth',
+    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray,currentAuth){
 
   
     var ref = new Firebase(FBURL + $routeParams.id);

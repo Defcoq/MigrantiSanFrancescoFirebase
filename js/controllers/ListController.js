@@ -1,4 +1,4 @@
-app.controller('ListController', ['$scope', '$firebaseArray', 'FBURL','FBURLCentri','centriSvc','anagraficaSvc', function($scope,$firebaseArray, FBURL,FBURLCentri,centriSvc,anagraficaSvc){
+app.controller('ListController', ['$scope', '$firebaseArray', 'FBURL','FBURLCentri','centriSvc','anagraficaSvc','currentAuth', function($scope,$firebaseArray, FBURL,FBURLCentri,centriSvc,anagraficaSvc,currentAuth){
   var anagraficamigranti = new Firebase(FBURL);
   var anagrafica = $firebaseArray(anagraficamigranti);
   console.log(anagrafica);
@@ -41,10 +41,12 @@ app.controller('ListController', ['$scope', '$firebaseArray', 'FBURL','FBURLCent
     columnDefs: [
       { field: 'cognome',displayName:'Cognome'},
       { field: 'nome',displayName:'Nome'},
-	   { field: 'cittadinanza',displayName:'Cittadinanza'},
-	    { field: 'centro',displayName:'Centro Accoglienza'},
+	  { field: 'cittadinanza',displayName:'Cittadinanza'},
+	  { field: 'centro',displayName:'Centro Accoglienza'},
+	  { field: 'createby',displayName:'Creato da'},
+	  { field: 'updateby',displayName:'Modificato da'},
 	   {
-    field: 'Action', enableFiltering: false, displayName:'Azione', enableColumnResizing: false,
+    field: 'Action', enableFiltering: false, displayName:'Azione', enableColumnResizing: false, width:'30%',
     cellTemplate: ' <div class="ui-grid-cell-contents"><a href="#/stampa/{{row.entity.$id}}" class="btn btn-success btn-primary">Stampa</a><a href="#/edit/{{row.entity.$id}}" class="btn btn-small btn-primary">Modifica</a>  <a class="btn btn-small btn-danger" ng-click="removeAnagrafica(row.entity.$id)">Elimina</a></div>'
     }
  

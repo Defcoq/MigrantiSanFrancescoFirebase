@@ -1,4 +1,5 @@
-app.controller('StampaPocketMoneyController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri', function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri){
+app.controller('StampaPocketMoneyController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri', 'currentAuth',
+function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri,currentAuth){
 
  var queryString = $location.search();
  console.log("roba ricevuto da querystring");

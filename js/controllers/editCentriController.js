@@ -1,5 +1,5 @@
-app.controller('EditCentriController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 'FBURLCentri',
-    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray,FBURLCentri){
+app.controller('EditCentriController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 'FBURLCentri','currentAuth',
+    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray,FBURLCentri,currentAuth){
 
     var ref = new Firebase(FBURL + $routeParams.id);
 	var anag = $firebaseObject(ref);

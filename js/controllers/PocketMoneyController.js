@@ -1,4 +1,5 @@
-app.controller('PocketMoneyController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri', function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri){
+app.controller('PocketMoneyController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri','currentAuth', 
+function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri,currentAuth){
 
 var anagraficamigranti = new Firebase(FBURL);
   var anagrafica = $firebaseArray(anagraficamigranti);

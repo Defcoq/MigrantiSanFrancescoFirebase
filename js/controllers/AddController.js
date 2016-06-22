@@ -1,4 +1,5 @@
-app.controller('AddController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri','centriSvc','anagraficaSvc', function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri,centriSvc,anagraficaSvc){
+app.controller('AddController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri','centriSvc','anagraficaSvc','currentAuth', 'FBURLUserProfile','$firebaseObject',
+function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri,centriSvc,anagraficaSvc,currentAuth,FBURLUserProfile,$firebaseObject){
 
  var countriesRef = new Firebase(FBURLCountries);
   var countries = $firebaseArray(countriesRef);
@@ -50,11 +51,27 @@ app.controller('AddController', ['$scope', '$firebaseArray', '$location', 'FBURL
 			
 			ricorso: $scope.anagrafica.ricorso ? $scope.anagrafica.ricorso : "",
             studioavvocato: $scope.anagrafica.studioavvocato ? $scope.anagrafica.studioavvocato: "",
-            note: $scope.anagrafica.note ? $scope.anagrafica.note : ""
+            note: $scope.anagrafica.note ? $scope.anagrafica.note : "",
+			createdby: "",
+			updateby:  "",
+			createdat:moment(new Date()).format("DD/MM/YYYY"),
+			updateat:moment(new Date()).format("DD/MM/YYYY"),
     };
     //anagrafica.$add(anagraficaObject);
-	anagraficaSvc.insertAndAddReferenceToCentro(anagraficaObject,$scope.centroaccoglienzacorrente);
-    $location.path('/');
+	 var ref = new Firebase(FBURLUserProfile + currentAuth.uid);
+	var userprofile = $firebaseObject(ref);
+    	userprofile.$loaded().then(
+	function(data)
+	{
+	 anagraficaObject.createdby = data.name + "-" + data.email;
+	 anagraficaObject.updateby = data.name + "-" + data.email;
+	 anagraficaSvc.insertAndAddReferenceToCentro(anagraficaObject,$scope.centroaccoglienzacorrente);
+      $location.path('/list');
+	}).catch(function(err)
+	{
+	  console.log(err);
+	});
+	
   };
   
    $scope.centroaccoglienzacorrente = null;

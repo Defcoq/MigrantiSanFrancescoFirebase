@@ -1,4 +1,4 @@
-app.controller('AddCentriController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri', function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri){
+app.controller('AddCentriController', ['$scope', '$firebaseArray', '$location', 'FBURL','FBURLCountries','$firebaseArray','FBURLCentri','currentAuth', function($scope, $firebaseArray, $location, FBURL,FBURLCountries,$firebaseArray,FBURLCentri,currentAuth){
 
   var countriesRef = new Firebase(FBURLCountries);
   var countries = $firebaseArray(countriesRef);
