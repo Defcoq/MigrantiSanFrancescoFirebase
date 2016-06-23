@@ -1,10 +1,15 @@
-app.controller('EditController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 'currentAuth','FBURLUserProfile',
-    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray,currentAuth,FBURLUserProfile){
+app.controller('EditController', ['$scope','$location', '$routeParams', '$firebaseObject', 'FBURL', 'FBURLCountries', '$firebaseArray', 'currentAuth','FBURLUserProfile','FBURLCentri',
+    function($scope, $location, $routeParams, $firebaseObject, FBURL,FBURLCountries,$firebaseArray,currentAuth,FBURLUserProfile,FBURLCentri){
 
     var ref = new Firebase(FBURL + $routeParams.id);
 	var anag = $firebaseObject(ref);
 
     $scope.anagrafica = anag;
+	
+	 
+   var centriAccoglienza = new Firebase(FBURLCentri);
+   var centri = $firebaseArray(centriAccoglienza);
+   $scope.centri = centri;
 	
 	 var ref = new Firebase(FBURLUserProfile + currentAuth.uid);
 	var userprofile = $firebaseObject(ref);
@@ -37,7 +42,7 @@ app.controller('EditController', ['$scope','$location', '$routeParams', '$fireba
 	  var isDateObject = $scope.anagrafica.datanascita instanceof Date;
 	  console.log("is a date object???");
 	  console.log(isDateObject);
-	  var dataNascitaDaSalvare = (isNaN($scope.anagrafica.datanascita) || $scope.anagrafica.datanascita instanceof Date)? $scope.anagrafica.datanascita.getTime() : $scope.anagrafica.datanascita;
+	 // var dataNascitaDaSalvare = (isNaN($scope.anagrafica.datanascita) || $scope.anagrafica.datanascita instanceof Date)? $scope.anagrafica.datanascita.getTime() : $scope.anagrafica.datanascita;
 	  
 	  console.log();
   
@@ -47,17 +52,17 @@ app.controller('EditController', ['$scope','$location', '$routeParams', '$fireba
             nome: $scope.anagrafica.cognome,
             codicefiscale: $scope.anagrafica.codicefiscale,
 			
-			datanascita:dataNascitaDaSalvare ,
-			datanascitatimestamp:dataNascitaDaSalvare,
-			datanascitastring: moment($scope.anagrafica.datanascita).format('DD/MM/YYYY'),
+			datanascita:$scope.anagrafica.datanascita ? $scope.anagrafica.datanascita : "yyyy-MM-dd",
+			datanascitatimestamp:$scope.anagrafica.datanascitatimestamp ? $scope.anagrafica.datanascitatimestamp : "",
+			datanascitastring:$scope.anagrafica.datanascitastring ? $scope.anagrafica.datanascitastring : "" ,
             luogonascita: $scope.anagrafica.luogonascita,
             provenienza: $scope.anagrafica.provenienza,
 			
 			
 			cittadinanza: $scope.anagrafica.cittadinanza,
-            dataingressoitalia: moment($scope.anagrafica.dataingressoitalia).format('DD/MM/YYYY'),
-			dataingressoitaliastring :$scope.anagrafica.dataingressoitaliastring,
-			dataingressoitaliatimestamp :$scope.anagrafica.dataingressoitaliatimestamp,
+            dataingressoitalia: $scope.anagrafica.dataingressoitalia ? $scope.anagrafica.dataingressoitalia :  "yyyy-MM-dd",
+			dataingressoitaliastring :$scope.anagrafica.dataingressoitaliastring ? $scope.anagrafica.dataingressoitaliastring:"",
+			dataingressoitaliatimestamp :$scope.anagrafica.dataingressoitaliatimestamp? $scope.anagrafica.dataingressoitaliatimestamp: "",
             cittaingresso: $scope.anagrafica.cittaingresso,
 			
 			paesetransito: $scope.anagrafica.paesetransito,
@@ -69,9 +74,9 @@ app.controller('EditController', ['$scope','$location', '$routeParams', '$fireba
             medicocurante: $scope.anagrafica.medicocurante,
 			
 			situazionesanitario: $scope.anagrafica.situazionesanitario,
-            datacommissione: $scope.anagrafica.datacommissione,
-			datacommissionestring : $scope.anagrafica.datacommissionestring,
-			datacommissionetimestamp : $scope.anagrafica.datacommissionetimestamp,
+            datacommissione: $scope.anagrafica.datacommissione ? $scope.anagrafica.datacommissione : "yyyy-MM-dd",
+			datacommissionestring : $scope.anagrafica.datacommissionestring? $scope.anagrafica.datacommissionestring: "",
+			datacommissionetimestamp : $scope.anagrafica.datacommissionetimestamp?  $scope.anagrafica.datacommissionetimestamp : "",
             esitocommissione: $scope.anagrafica.esitocommissione,
 			
 			ricorso: $scope.anagrafica.ricorso,
@@ -79,10 +84,11 @@ app.controller('EditController', ['$scope','$location', '$routeParams', '$fireba
             note: $scope.anagrafica.note,
 			updateby: $scope.anagrafica.updateby,
 	        updateat: moment(new Date()).format("DD/MM/YYYY"),
+			centro: $scope.anagrafica.centro,
         });
         $scope.edit_form.$setPristine();
         $scope.anagrafica = {};
-        $location.path('/anagrafiche');
+        $location.path('/list');
 
     };
 	
@@ -185,6 +191,7 @@ $scope.$watch("anagrafica.dataingressoitalia", function(newValue, oldValue) {
 	console.log("valore delle date dal watchhhh");
 	console.log(newValue);
 	console.log(oldValue);
+	var dataNascitaDaSalvare ;
 	if(newValue)
 	{
 	if(newValue !="yyyy-MM-dd")
@@ -205,6 +212,7 @@ $scope.$watch("anagrafica.datacommissione", function(newValue, oldValue) {
 	console.log("valore delle date dal watchhhh");
 	console.log(newValue);
 	console.log(oldValue);
+	var dataNascitaDaSalvare ;
 	if(newValue)
 	{
 	if(newValue !="yyyy-MM-dd")

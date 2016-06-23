@@ -1,7 +1,14 @@
 <h1>Modifica Anagrafica Migrante</h1>
 
 <form name="edit_form" class="form-horizontal" role="form">
-
+<h3> selezionare un centro di accoglienza</h3>
+<select class="form-control" ng-model="anagrafica.centro"
+        ng-disabled="centri.length == 0"
+        ng-options="centro.nome as centro.nome for centro in centri">
+  <option value="">Seleziona un centro di accoglienza</option>
+</select>
+<br/>
+<br/>
 <div class="row" >
 <div class="form-group">
     <label for="Cognome" class="col-sm-2 control-label">Cognome:</label>

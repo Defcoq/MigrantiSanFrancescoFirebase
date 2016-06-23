@@ -1,7 +1,18 @@
 app.controller('ListCentriController', ['$scope', '$firebaseArray', 'FBURL','FBURLCentri','$location','currentAuth', function($scope,$firebaseArray, FBURL,FBURLCentri,$location,currentAuth){
   var anagraficamigranti = new Firebase(FBURL);
   var anagrafica = $firebaseArray(anagraficamigranti);
-  $scope.anagraficamigranti = anagrafica;
+   $scope.IsDataLOad = false;
+  	anagrafica.$loaded().then(
+	function(data)
+	{
+	$scope.anagraficamigranti = data;
+	$scope.IsDataLOad = true;
+	}
+	).catch(function(err)
+	{
+	  console.log(err);
+	});
+  //$scope.anagraficamigranti = anagrafica;
   
   var centriAccoglienza = new Firebase(FBURLCentri);
   var centri = $firebaseArray(centriAccoglienza);

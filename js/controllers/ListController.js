@@ -2,7 +2,25 @@ app.controller('ListController', ['$scope', '$firebaseArray', 'FBURL','FBURLCent
   var anagraficamigranti = new Firebase(FBURL);
   var anagrafica = $firebaseArray(anagraficamigranti);
   console.log(anagrafica);
-  $scope.anagraficamigranti = anagrafica;
+ 
+  $scope.IsDataLOad = false;
+  	anagrafica.$loaded().then(
+	function(data)
+	{
+	console.log("caricamenti dati terminati =>");
+	console.log(data);
+	$scope.anagraficamigranti = data;
+	//gridoptions
+	$scope.gridOptions.data = data;
+  
+  //endgrid options
+	$scope.IsDataLOad = true;
+	}
+	).catch(function(err)
+	{
+	  console.log(err);
+	});
+  //$scope.anagraficamigranti = anagrafica;
   
    var centriAccoglienza = new Firebase(FBURLCentri);
    var centri = $firebaseArray(centriAccoglienza);
@@ -28,7 +46,7 @@ app.controller('ListController', ['$scope', '$firebaseArray', 'FBURL','FBURLCent
       }
     });
    
-    $scope.gridOptions = {
+   $scope.gridOptions = {
 	data: $scope.anagraficamigranti,
     enableFiltering: true,
 	selectionRowHeaderWidth: 35,
@@ -52,6 +70,7 @@ app.controller('ListController', ['$scope', '$firebaseArray', 'FBURL','FBURLCent
  
     ]
   };
+    
   
   $scope.getTableHeight = function() {
        var rowHeight = 40; // your row height
